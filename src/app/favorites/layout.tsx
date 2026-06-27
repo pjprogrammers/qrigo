@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Access your saved QR codes, barcodes, and digital business cards all in one place. Quickly find, share, or regenerate your favorite codes.",
   openGraph: {
-    title: "Favorites – Qrify",
+    title: "Favorites – Qrigo",
     description:
       "Access your saved QR codes, barcodes, and digital business cards.",
     url: `${SITE_URL}/favorites`,
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Favorites – Qrify",
+    title: "Favorites – Qrigo",
     description:
       "Access your saved QR codes, barcodes, and digital business cards.",
     images: [OG_IMAGE],

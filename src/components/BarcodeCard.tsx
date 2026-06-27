@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useMemo, useEffect, useState, useCallback } from "react";
+import React, { useMemo, useEffect, useState, useCallback, useRef } from "react";
 import { useQRStore } from "@/store/qrStore";
 import { renderBarcodeSvg } from "@/barcode/renderer";
 import { barcodeCardThemes } from "@/barcode/presets";
-import { downloadBarcodePng } from "@/barcode/export";
-import { sanitizeFilename } from "@/lib/utils";
+import { toPng } from "html-to-image";
 import { Download, Share2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,6 +16,7 @@ export function BarcodeCard() {
 
   const theme = barcodeCardThemes.find((t) => t.id === barcodeCardTheme) ?? barcodeCardThemes[0];
   const [svgUrl, setSvgUrl] = useState<string>("");
+  const cardRef = useRef<HTMLDivElement>(null);
   const isLong = data.length > 80;
 
   const svgString = useMemo(() => {
@@ -36,18 +36,28 @@ export function BarcodeCard() {
 
   useEffect(() => {
     if (!svgString) return;
-    const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    setSvgUrl(url);
-    return () => {
-      URL.revokeObjectURL(url);
-      setSvgUrl("");
-    };
+    const base64 = btoa(unescape(encodeURIComponent(svgString)));
+    setSvgUrl(`data:image/svg+xml;base64,${base64}`);
   }, [svgString]);
 
-  const handleDownload = useCallback(() => {
-    if (svgString) downloadBarcodePng(svgString, `barcode-${sanitizeFilename(data.slice(0, 20))}`, 800, 200);
-  }, [svgString, data]);
+  const handleDownload = useCallback(async () => {
+    if (!cardRef.current) return;
+    try {
+      const dataUrl = await toPng(cardRef.current, {
+        pixelRatio: 3,
+        cacheBust: true,
+        backgroundColor: "#ffffff",
+      });
+      const link = document.createElement("a");
+      link.download = "qrify-card.png";
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (err) {
+      console.error("Failed to download card image", err);
+    }
+  }, []);
 
   const handleShare = useCallback(async () => {
     if (navigator.share) {
@@ -68,6 +78,7 @@ export function BarcodeCard() {
   return (
     <div className="flex flex-col items-center gap-5 w-full max-w-sm">
       <div
+        ref={cardRef}
         className="relative w-full rounded-2xl p-5 flex flex-col items-center shadow-2xl"
         style={{
           background: `linear-gradient(180deg, ${theme.cardStart}, ${theme.cardEnd})`,

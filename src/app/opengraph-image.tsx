@@ -49,7 +49,7 @@ export default function OGImage() {
             textAlign: "center",
           }}
         >
-          Qrify
+          Qrigo
         </h1>
         <p
           style={{

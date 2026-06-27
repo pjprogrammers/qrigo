@@ -29,7 +29,7 @@ export default function ContactGeneratorPage() {
 
   React.useEffect(() => {
     try {
-      const saved = localStorage.getItem("qrify_contact_draft");
+      const saved = localStorage.getItem("qrigo_contact_draft");
       if (saved) {
         const parsed = JSON.parse(saved);
         setCard(parsed.card || getDefaultContact());
@@ -42,7 +42,7 @@ export default function ContactGeneratorPage() {
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       try {
-        localStorage.setItem("qrify_contact_draft", JSON.stringify({ card, template, theme }));
+        localStorage.setItem("qrigo_contact_draft", JSON.stringify({ card, template, theme }));
       } catch {}
     }, 500);
     return () => clearTimeout(timeout);
@@ -52,7 +52,7 @@ export default function ContactGeneratorPage() {
     setCard(getDefaultContact());
     setTemplate("modern");
     setTheme("corporate");
-    localStorage.removeItem("qrify_contact_draft");
+    localStorage.removeItem("qrigo_contact_draft");
   }, []);
 
   const hasData = hasContactData(card);

@@ -72,7 +72,7 @@ export function Navbar() {
       <header className="hidden md:flex fixed top-0 left-0 right-0 h-14 border-b border-neutral-200 bg-white/80 backdrop-blur-xl z-40 items-center px-6">
         <Link href="/" className="flex items-center gap-2 mr-8 shrink-0">
           <LogoMark className="w-7 h-7" />
-          <span className="text-base font-bold">Qrify</span>
+          <span className="text-base font-bold">Qrigo</span>
         </Link>
         <nav className="flex items-center gap-1">
           {navItems.map((item) => {
@@ -110,7 +110,7 @@ export function Navbar() {
         </button>
         <Link href="/" className="flex items-center gap-2">
           <LogoMark className="w-7 h-7" />
-          <span className="text-base font-bold">Qrify</span>
+          <span className="text-base font-bold">Qrigo</span>
         </Link>
         <ThemeToggle />
       </header>
@@ -133,7 +133,7 @@ export function Navbar() {
         <div className="flex items-center justify-between p-4 border-b border-neutral-100">
           <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
             <LogoMark className="w-7 h-7" />
-          <span className="text-base font-bold">Qrify</span>
+          <span className="text-base font-bold">Qrigo</span>
           </Link>
           <button
             onClick={() => setOpen(false)}
@@ -164,7 +164,7 @@ export function Navbar() {
           })}
         </nav>
         <div className="p-4 border-t border-neutral-200">
-          <p className="text-xs text-neutral-400">Qrify v1.0</p>
+          <p className="text-xs text-neutral-400">Qrigo v1.0</p>
         </div>
       </aside>
     </>

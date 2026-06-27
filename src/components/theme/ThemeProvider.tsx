@@ -12,7 +12,7 @@ interface ThemeContext {
 
 const Ctx = React.createContext<ThemeContext | null>(null);
 
-const STORAGE_KEY = "qrify-theme";
+const STORAGE_KEY = "qrigo-theme";
 
 function getInitialTheme(): Theme {
   try {

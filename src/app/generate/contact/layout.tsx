@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "contactless business card",
   ],
   openGraph: {
-    title: "Business Card QR Generator – Create vCard QR Codes | Qrify",
+    title: "Business Card QR Generator – Create vCard QR Codes | Qrigo",
     description:
       "Generate professional business card QR codes and downloadable vCards.",
     url: `${SITE_URL}/generate/contact`,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business Card QR Generator – Create vCard QR Codes | Qrify",
+    title: "Business Card QR Generator – Create vCard QR Codes | Qrigo",
     description:
       "Generate professional business card QR codes and downloadable vCards.",
     images: [OG_IMAGE],

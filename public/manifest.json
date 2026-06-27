@@ -1,6 +1,6 @@
 {
-  "name": "Qrify – Free QR Code & Barcode Generator",
-  "short_name": "Qrify",
+  "name": "Qrigo – Free QR Code & Barcode Generator",
+  "short_name": "Qrigo",
   "description": "Create QR codes, barcodes, WiFi QR codes, business cards, and scan QR codes online for free.",
   "start_url": "/",
   "scope": "/",

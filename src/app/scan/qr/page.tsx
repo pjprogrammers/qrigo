@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "QR decoder",
   ],
   openGraph: {
-    title: "QR Code Scanner – Scan QR Codes Online | Qrify",
+    title: "QR Code Scanner – Scan QR Codes Online | Qrigo",
     description: "Scan QR codes instantly using your camera.",
     url: `${SITE_URL}/scan/qr`,
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "QR Code Scanner – Scan QR Codes Online | Qrify",
+    title: "QR Code Scanner – Scan QR Codes Online | Qrigo",
     description: "Scan QR codes instantly using your camera.",
     images: [OG_IMAGE],
   },

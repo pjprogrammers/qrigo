@@ -48,7 +48,7 @@ export function DownloadButton() {
     if (!svgString) return;
     const filename = codeType === "barcode"
       ? `barcode-${sanitizeFilename(username || data.slice(0, 20))}`
-      : `qrify-${username || "qrcode"}`;
+      : `qrigo-${username || "qrcode"}`;
 
     if (codeType === "barcode") {
       switch (format) {

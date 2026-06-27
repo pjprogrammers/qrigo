@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Codabar barcode",
   ],
   openGraph: {
-    title: "Free Barcode Generator – Create Code 128, EAN & UPC Barcodes | Qrify",
+    title: "Free Barcode Generator – Create Code 128, EAN & UPC Barcodes | Qrigo",
     description:
       "Generate Code128, EAN13, EAN8, UPC and other barcodes online for free.",
     url: `${SITE_URL}/generate/barcode`,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Barcode Generator – Create Code 128, EAN & UPC Barcodes | Qrify",
+    title: "Free Barcode Generator – Create Code 128, EAN & UPC Barcodes | Qrigo",
     description:
       "Generate Code128, EAN13, EAN8, UPC and other barcodes online for free.",
     images: [OG_IMAGE],

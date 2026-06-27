@@ -109,7 +109,7 @@ export function ContactForm({ card, onChange }: ContactFormProps) {
             <Input
               value={card.website || ""}
               onChange={(e) => update({ website: e.target.value })}
-              placeholder="https://qrify.app"
+              placeholder="https://qrigo.app"
               type="url"
               className={getError("website") ? "border-red-400" : ""}
             />
@@ -117,7 +117,7 @@ export function ContactForm({ card, onChange }: ContactFormProps) {
           </div>
           <div className="space-y-2">
             <Label>Company</Label>
-            <Input value={card.company || ""} onChange={(e) => update({ company: e.target.value })} placeholder="Qrify Inc" />
+            <Input value={card.company || ""} onChange={(e) => update({ company: e.target.value })} placeholder="Qrigo Inc" />
           </div>
         </div>
         <div className="mt-4 space-y-2">
@@ -153,7 +153,7 @@ export function ContactForm({ card, onChange }: ContactFormProps) {
           <Input
             value={card.email || ""}
             onChange={(e) => update({ email: e.target.value })}
-            placeholder="john@qrify.app"
+            placeholder="john@qrigo.app"
             type="email"
             className={getError("email") ? "border-red-400" : ""}
           />

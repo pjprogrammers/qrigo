@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "pre-filled email QR",
   ],
   openGraph: {
-    title: "Email QR Code Generator – Create Mail QR Codes | Qrify",
+    title: "Email QR Code Generator – Create Mail QR Codes | Qrigo",
     description: "Generate QR codes that open a pre-filled email message.",
     url: `${SITE_URL}/generate/email`,
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Email QR Code Generator – Create Mail QR Codes | Qrify",
+    title: "Email QR Code Generator – Create Mail QR Codes | Qrigo",
     description: "Generate QR codes that open a pre-filled email message.",
     images: [OG_IMAGE],
   },

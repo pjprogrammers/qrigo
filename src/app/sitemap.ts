@@ -83,19 +83,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/scan`,
       lastModified: siteLastModified,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${SITE_URL}/scan/qr`,
       lastModified: siteLastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
     {
       url: `${SITE_URL}/scan/barcode`,
       lastModified: siteLastModified,
-      changeFrequency: "monthly",
-      priority: 0.6,
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
   ];
 }

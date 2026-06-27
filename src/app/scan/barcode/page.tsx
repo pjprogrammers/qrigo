@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     "Code128 scanner",
   ],
   openGraph: {
-    title: "Barcode Scanner – Scan Barcodes Online | Qrify",
+    title: "Barcode Scanner – Scan Barcodes Online | Qrigo",
     description: "Scan EAN, UPC, Code128, ITF, and Codabar barcodes instantly.",
     url: `${SITE_URL}/scan/barcode`,
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Barcode Scanner – Scan Barcodes Online | Qrify",
+    title: "Barcode Scanner – Scan Barcodes Online | Qrigo",
     description: "Scan EAN, UPC, Code128, ITF, and Codabar barcodes instantly.",
     images: [OG_IMAGE],
   },

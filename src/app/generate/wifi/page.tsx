@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "network QR code",
   ],
   openGraph: {
-    title: "WiFi QR Code Generator – Share WiFi Passwords Instantly | Qrify",
+    title: "WiFi QR Code Generator – Share WiFi Passwords Instantly | Qrigo",
     description: "Create QR codes for WiFi networks and let others connect instantly.",
     url: `${SITE_URL}/generate/wifi`,
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WiFi QR Code Generator – Share WiFi Passwords Instantly | Qrify",
+    title: "WiFi QR Code Generator – Share WiFi Passwords Instantly | Qrigo",
     description: "Create QR codes for WiFi networks and let others connect instantly.",
     images: [OG_IMAGE],
   },

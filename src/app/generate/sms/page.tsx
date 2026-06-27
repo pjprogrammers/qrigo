@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "SMS marketing QR code",
   ],
   openGraph: {
-    title: "SMS QR Code Generator – Generate SMS QR Codes | Qrify",
+    title: "SMS QR Code Generator – Generate SMS QR Codes | Qrigo",
     description: "Create QR codes that open a pre-filled SMS message on mobile devices.",
     url: `${SITE_URL}/generate/sms`,
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SMS QR Code Generator – Generate SMS QR Codes | Qrify",
+    title: "SMS QR Code Generator – Generate SMS QR Codes | Qrigo",
     description: "Create QR codes that open a pre-filled SMS message on mobile devices.",
     images: [OG_IMAGE],
   },

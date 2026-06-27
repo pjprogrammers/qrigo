@@ -1,7 +1,7 @@
 import { openDB, type IDBPDatabase } from "idb";
 import type { GeneratedCode, ScanHistoryItem, DraftItem } from "./schema";
 
-const DB_NAME = "qrify";
+const DB_NAME = "qrigo";
 const DB_VERSION = 1;
 
 let dbInstance: IDBPDatabase | null = null;

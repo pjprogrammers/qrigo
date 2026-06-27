@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "contactless calling QR",
   ],
   openGraph: {
-    title: "Phone QR Code Generator – Create Call QR Codes | Qrify",
+    title: "Phone QR Code Generator – Create Call QR Codes | Qrigo",
     description: "Generate QR codes that dial a phone number when scanned.",
     url: `${SITE_URL}/generate/phone`,
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Phone QR Code Generator – Create Call QR Codes | Qrify",
+    title: "Phone QR Code Generator – Create Call QR Codes | Qrigo",
     description: "Generate QR codes that dial a phone number when scanned.",
     images: [OG_IMAGE],
   },

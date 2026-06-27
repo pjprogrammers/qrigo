@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { SITE_URL, SITE_NAME, OG_IMAGE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Settings – Qrify Preferences",
+  title: "Settings – Qrigo Preferences",
   description:
-    "Customize your Qrify experience with themes, export formats (PNG, SVG, JPEG, PDF), and manage your local data storage preferences.",
+    "Customize your Qrigo experience with themes, export formats (PNG, SVG, JPEG, PDF), and manage your local data storage preferences.",
   openGraph: {
-    title: "Settings – Qrify",
+    title: "Settings – Qrigo",
     description:
-      "Customize your Qrify experience with themes and export formats.",
+      "Customize your Qrigo experience with themes and export formats.",
     url: `${SITE_URL}/settings`,
     siteName: SITE_NAME,
     locale: "en_US",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Settings – Qrify",
+    title: "Settings – Qrigo",
     description:
-      "Customize your Qrify experience with themes and export formats.",
+      "Customize your Qrigo experience with themes and export formats.",
     images: [OG_IMAGE],
   },
   alternates: {

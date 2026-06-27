@@ -4,11 +4,11 @@ import { SITE_URL, SITE_NAME, OG_IMAGE } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "QR Code & Barcode History – Saved Generations",
   description:
-    "Review your full QR code and barcode generation history on Qrify. Re-download, share, or delete past codes. All creations saved locally.",
+    "Review your full QR code and barcode generation history on Qrigo. Re-download, share, or delete past codes. All creations saved locally.",
   openGraph: {
-    title: "History – Qrify",
+    title: "History – Qrigo",
     description:
-      "Review your full QR code and barcode generation history on Qrify.",
+      "Review your full QR code and barcode generation history on Qrigo.",
     url: `${SITE_URL}/history`,
     siteName: SITE_NAME,
     locale: "en_US",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "History – Qrify",
+    title: "History – Qrigo",
     description:
-      "Review your full QR code and barcode generation history on Qrify.",
+      "Review your full QR code and barcode generation history on Qrigo.",
     images: [OG_IMAGE],
   },
   alternates: {

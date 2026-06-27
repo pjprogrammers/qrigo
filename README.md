@@ -1,6 +1,6 @@
 <div align="center">
 
-# Qrify — Free QR Code & Barcode Generator
+# Qrigo — Free QR Code & Barcode Generator
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev/)
@@ -11,11 +11,13 @@
 
 **Create, scan, and export QR codes and barcodes — entirely in your browser. No signup, no server uploads, no ads.**
 
-[Live Demo](https://qrify.vercel.app) ·
-[Report Bug](https://github.com/pjprogrammers/qrify/issues) ·
-[Request Feature](https://github.com/pjprogrammers/qrify/issues)
+[Live Demo](https://qrigo.vercel.app) ·
+[Report Bug](https://github.com/pjprogrammers/qrigo/issues) ·
+[Request Feature](https://github.com/pjprogrammers/qrigo/issues)
 
 </div>
+
+> **Latest**: Image upload scanning with multi-stage decoder (8 variants), scan-specific OG image, FAQ/HowTo structured data, full accessibility pass, and dedicated `/scan/qr` & `/scan/barcode` sub-routes.
 
 ---
 
@@ -72,12 +74,13 @@
   <td width="50%">
 
 ### QR & Barcode Scanner
-- Real-time camera scanning
-- QR codes + 1D barcodes (EAN, UPC, Code128, ITF, Codabar)
-- Camera switching (front/rear)
-- Flash toggle
-- Auto-detect and parse scan results
-- History saving with IndexedDB
+- Real-time camera scanning with QR code + 1D barcode support
+- **Image upload scanning** — drag & drop or browse files for offline decoding
+- **Multi-stage decoder** — 8 image variants (grayscale, high-contrast, sharpened, threshold, 3 rotations) for maximum decode rate
+- Dual-engine fallback: ZXing (primary) + jsQR (secondary)
+- Camera switching (front/rear), flash toggle
+- Auto-detect and parse scan results with contextual actions (open, copy, share, call)
+- Dedicated sub-routes: `/scan/qr` (QR-only) and `/scan/barcode` (barcode-only)
 
   </td>
 </tr>
@@ -116,8 +119,8 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/pjprogrammers/qrify.git
-cd qrify
+git clone https://github.com/pjprogrammers/qrigo.git
+cd qrigo
 
 # Install dependencies
 npm install
@@ -154,9 +157,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `/generate/location` | Location / map QR code generator |
 | `/generate/event` | Calendar event QR code generator |
 | `/generate/phone` | Phone / tel QR code generator |
-| `/scan` | QR + barcode scanner |
-| `/scan/qr` | QR-only scanner |
-| `/scan/barcode` | Barcode-only scanner |
+| `/scan` | QR + barcode scanner (camera + image upload) |
+| `/scan/qr` | QR-only scanner with immediate camera start |
+| `/scan/barcode` | Barcode-only scanner with immediate camera start |
 | `/history` | Saved generation history |
 | `/favorites` | Favorite codes |
 | `/settings` | App preferences |
@@ -175,7 +178,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | **Storage** | [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) via [idb](https://github.com/jakearchibald/idb) |
 | **QR Generation** | [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator) |
 | **Barcode Generation** | [JsBarcode](https://github.com/lindell/JsBarcode) |
-| **Camera Scanning** | [@zxing/browser](https://github.com/zxing-js/browser) |
+| **Camera Scanning** | [@zxing/browser](https://github.com/zxing-js/browser) + [jsQR](https://github.com/cozmo/jsQR) (fallback) |
 | **Icons** | [Lucide React](https://lucide.dev/) |
 | **UI Primitives** | [class-variance-authority](https://cva.style/), [clsx](https://github.com/lukeed/clsx), [tailwind-merge](https://github.com/dcastil/tailwind-merge) |
 | **PWA** | Web App Manifest + Service Worker ready |
@@ -200,8 +203,11 @@ src/
 ├── components/             # Reusable UI components
 │   ├── contact/            # Contact card generator components
 │   ├── layout/             # Sidebar navigation
-│   ├── scanners/           # Camera scanner components
-│   ├── seo/                # Structured data, FAQSchema, RelatedTools
+│   ├── scanners/           # Camera + upload scanner components (CameraView, UploadZone, ScannerResult, etc.)
+│   ├── seo/                # Structured data, FAQPage, HowTo, ScanFeatures, RelatedTools
+│   │   ├── schemas/        # JSON-LD schema components (WebApplication, FAQPage, HowTo, BreadcrumbList, etc.)
+│   │   ├── components/     # SEO utilities (Hreflang, RobotsMeta, PreconnectLinks, SkipLink)
+│   │   └── meta/           # Metadata builders (KeywordManager, MetadataGenerator, OpenGraphBuilder, etc.)
 │   └── ui/                 # Base UI primitives (Button, Card, Input, etc.)
 ├── features/
 │   └── contact/            # vCard generation business logic
@@ -220,14 +226,17 @@ src/
 
 ## 🔍 SEO & Performance
 
-- **Metadata templates** — per-route titles, descriptions, keywords, Open Graph, Twitter cards
+- **Per-route metadata** — titles, descriptions, keywords, Open Graph, Twitter cards for every page
+- **Scan-specific OG image** — dedicated `/scan/opengraph-image` with QR + barcode icons
 - **Canonical URLs** — every page has a self-referencing canonical
-- **Sitemap** — auto-generated `/sitemap.xml` covering all 18 indexed routes
+- **Hreflang tags** — multi-language support via HreflangTags component
+- **Sitemap** — auto-generated `/sitemap.xml` covering all indexed routes, scan pages at priority 0.9
 - **Robots.txt** — properly configured `/robots.txt` with AI crawler blocking
-- **Structured Data** — JSON-LD `WebApplication` schema on homepage
-- **FAQ Schema** — 6-item FAQPage on homepage for rich snippets
+- **Structured Data** — JSON-LD schemas: `WebApplication`, `FAQPage`, `HowTo`, `BreadcrumbList`, `ItemList`, `Organization`, `SoftwareApplication`, `AggregateRating`, `Review`, `SearchAction`
+- **Scan FAQ Schema** — 8-item FAQPage on `/scan` for rich snippet eligibility
+- **Scan HowTo Schema** — HowTo structured data for camera + upload workflows
 - **Dynamic OG Images** — auto-generated `/opengraph-image.png` via `@vercel/og`
-- **Internal Linking** — Related Tools sections on every generator page
+- **Internal Linking** — Related Tools sections on every generator and scanner page
 - **PWA Ready** — installable with manifest.json and app icons
 - **Security Headers** — X-Content-Type-Options, X-Frame-Options, Permissions-Policy, HSTS
 - **100% Client-Side** — all processing in browser for instant loads

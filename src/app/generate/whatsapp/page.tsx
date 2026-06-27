@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "WhatsApp message QR",
   ],
   openGraph: {
-    title: "WhatsApp QR Code Generator – Create Chat Links | Qrify",
+    title: "WhatsApp QR Code Generator – Create Chat Links | Qrigo",
     description: "Generate QR codes that open a WhatsApp chat with a pre-filled number.",
     url: `${SITE_URL}/generate/whatsapp`,
     images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WhatsApp QR Code Generator – Create Chat Links | Qrify",
+    title: "WhatsApp QR Code Generator – Create Chat Links | Qrigo",
     description: "Generate QR codes that open a WhatsApp chat with a pre-filled number.",
     images: [OG_IMAGE],
   },

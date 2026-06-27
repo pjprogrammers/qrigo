@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "custom QR code",
   ],
   openGraph: {
-    title: "Free QR Code Generator – Create QR Codes Online | Qrify",
+    title: "Free QR Code Generator – Create QR Codes Online | Qrigo",
     description:
       "Generate QR codes for URLs, text, email, phone numbers, WiFi, WhatsApp, locations, and contact cards.",
     url: `${SITE_URL}/generate/qr`,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free QR Code Generator – Create QR Codes Online | Qrify",
+    title: "Free QR Code Generator – Create QR Codes Online | Qrigo",
     description:
       "Generate QR codes for URLs, text, email, phone numbers, WiFi, WhatsApp, locations, and contact cards.",
     images: [OG_IMAGE],
