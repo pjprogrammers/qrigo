@@ -48,9 +48,8 @@ export function QRCard() {
     if (!cardRef.current) return;
     try {
       const dataUrl = await toPng(cardRef.current, {
-        pixelRatio: 3,
+        pixelRatio: 4,
         cacheBust: true,
-        backgroundColor: "#ffffff",
       });
       const link = document.createElement("a");
       link.download = "qrify-card.png";
@@ -96,63 +95,67 @@ export function QRCard() {
   if (!data) return null;
 
   return (
-    <div className="w-full rounded-xl overflow-hidden flex flex-col items-center"
-      style={{
-        background: `linear-gradient(180deg, ${cardTheme.cardStart}, ${cardTheme.cardEnd})`,
-      }}
-    >
-      <div className="flex flex-col items-center p-4 w-full">
-        {/* White card */}
-        <div
-          ref={cardRef}
-          className="w-full max-w-[360px] rounded-[20px] flex flex-col"
-          style={{
-            backgroundColor: "#ffffff",
-            boxShadow: "0 16px 40px rgba(0,0,0,0.15)",
-          }}
-        >
-          {/* QR Code - always square */}
-          <div className="w-full aspect-square p-5 flex flex-col">
-            <div className="flex-1 rounded-[18px] overflow-hidden flex items-center justify-center">
-              {svgUrl ? (
-                <img src={svgUrl} alt="QR Code" className="w-full h-full object-contain" />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-neutral-400 text-sm">
-                  Generating...
-                </div>
-              )}
+    <div className="flex flex-col items-center">
+      {/* Exported card */}
+      <div
+        ref={cardRef}
+        className="w-full rounded-xl overflow-hidden flex flex-col items-center"
+        style={{
+          background: `linear-gradient(180deg, ${cardTheme.cardStart}, ${cardTheme.cardEnd})`,
+        }}
+      >
+        <div className="flex flex-col items-center p-4 w-full">
+          {/* White card */}
+          <div
+            className="w-full max-w-[360px] rounded-[20px] flex flex-col"
+            style={{
+              backgroundColor: "#ffffff",
+              boxShadow: "0 16px 40px rgba(0,0,0,0.15)",
+            }}
+          >
+            {/* QR Code - always square */}
+            <div className="w-full aspect-square p-5 flex flex-col">
+              <div className="flex-1 rounded-[18px] overflow-hidden flex items-center justify-center">
+                {svgUrl ? (
+                  <img src={svgUrl} alt="QR Code" className="w-full h-full object-contain" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-neutral-400 text-sm">
+                    Generating...
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Text at bottom center */}
+            {displayText && (
+              <div className="flex items-center justify-center gap-2 pb-5 px-5">
+                {platform !== "none" ? (
+                  <PlatformLogo platform={platform} color={logoColor} size={14} />
+                ) : (
+                  <span style={{ color: logoColor }}>{getIcon()}</span>
+                )}
+                <span
+                  className="text-xs font-bold tracking-wide"
+                  style={{ color: logoColor }}
+                >
+                  {displayText}
+                </span>
+              </div>
+            )}
           </div>
-
-          {/* Text at bottom center */}
-          {displayText && (
-            <div className="flex items-center justify-center gap-2 pb-5 px-5">
-              {platform !== "none" ? (
-                <PlatformLogo platform={platform} color={logoColor} size={14} />
-              ) : (
-                <span style={{ color: logoColor }}>{getIcon()}</span>
-              )}
-              <span
-                className="text-xs font-bold tracking-wide"
-                style={{ color: logoColor }}
-              >
-                {displayText}
-              </span>
-            </div>
-          )}
         </div>
+      </div>
 
-        {/* Action buttons */}
-        <div className="flex gap-3 mt-5">
-          <Button variant="gradient" onClick={handleDownload} className="gap-2">
-            <Download className="w-4 h-4" />
-            Download
-          </Button>
-          <Button variant="outline" onClick={handleShare} className="gap-2">
-            <Share2 className="w-4 h-4" />
-            Share
-          </Button>
-        </div>
+      {/* Action buttons - outside exported node */}
+      <div className="flex gap-3 mt-5">
+        <Button variant="gradient" onClick={handleDownload} className="gap-2">
+          <Download className="w-4 h-4" />
+          Download
+        </Button>
+        <Button variant="outline" onClick={handleShare} className="gap-2">
+          <Share2 className="w-4 h-4" />
+          Share
+        </Button>
       </div>
     </div>
   );

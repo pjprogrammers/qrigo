@@ -37,9 +37,7 @@ export default function BarcodeGeneratorPage() {
     setCodeType,
   } = useQRStore();
 
-  React.useEffect(() => { setCodeType("barcode"); }, []);
-
-  React.useEffect(() => { setCodeType("barcode"); }, []);
+  React.useEffect(() => { setCodeType("barcode"); }, [setCodeType]);
 
   const handleBarcodeFormatChange = (fmt: string) => {
     setBarcodeFormat(fmt as any);

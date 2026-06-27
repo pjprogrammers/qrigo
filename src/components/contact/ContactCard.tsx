@@ -31,7 +31,7 @@ export function ContactCardView({ card, template, theme, qrColors }: ContactCard
       dotSize: 4,
       errorCorrection: "H",
     });
-  }, [vcfContent]);
+  }, [vcfContent, card.firstName, card.lastName, card.company]);
 
   const svgString = useMemo(() => {
     if (!qrSvg) return "";
@@ -43,7 +43,7 @@ export function ContactCardView({ card, template, theme, qrColors }: ContactCard
     const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     setSvgUrl(url);
-    return () => { if (svgUrl) URL.revokeObjectURL(svgUrl); };
+    return () => { URL.revokeObjectURL(url); };
   }, [svgString]);
 
   const filename = sanitizeContactFilename(card);

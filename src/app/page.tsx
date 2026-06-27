@@ -31,13 +31,13 @@ function FeatureCard({ icon, title, desc, i }: { icon: React.ReactNode; title: s
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
-      className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 hover:shadow-lg hover:shadow-purple-500/10 dark:hover:shadow-purple-500/5 transition-all duration-300 hover:-translate-y-1"
+      className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-50 p-6 hover:shadow-lg hover:shadow-purple-500/10 dark:hover:shadow-purple-500/5 transition-all duration-300 hover:-translate-y-1"
     >
       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-950/70 dark:to-pink-950/70 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
         {icon}
       </div>
-      <h3 className="font-semibold mb-2 dark:text-white">{title}</h3>
-      <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">{desc}</p>
+      <h3 className="font-semibold mb-2 dark:text-black">{title}</h3>
+      <p className="text-sm text-neutral-500 dark:text-neutral-800 leading-relaxed">{desc}</p>
     </motion.div>
   );
 }
@@ -92,7 +92,7 @@ export default function Home() {
             <motion.div
               variants={fadeUp}
               custom={0}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 dark:from-purple-500/20 dark:via-pink-500/20 dark:to-orange-500/20 text-sm font-medium text-neutral-700 dark:text-neutral-950 border border-transparent dark:border-white/10 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 dark:from-purple-500/20 dark:via-pink-500/20 dark:to-orange-500/20 text-sm font-medium text-neutral-700 dark:text-black border border-transparent dark:border-white/10 mb-6"
             >
               <Sparkles className="w-4 h-4 text-purple-500" />
               All-in-One QR & Barcode Platform
@@ -100,7 +100,7 @@ export default function Home() {
             <motion.h1
               variants={fadeUp}
               custom={1}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight dark:text-neutral-800"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight dark:text-black"
             >
               Free QR Code & Barcode Generator
               <br />
@@ -128,7 +128,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/scan">
-                <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6 dark:border-neutral-700 dark:text-neutral-600 dark:hover:bg-neutral-800">
+                <Button variant="outline" size="lg" className="gap-2 text-base px-8 py-6 dark:border-neutral-600 dark:text-black dark:hover:bg-neutral-800">
                   <Scan className="w-5 h-5" />
                   Open Scanner
                 </Button>
@@ -145,7 +145,7 @@ export default function Home() {
         >
           <div className="max-w-5xl mx-auto">
             <motion.div variants={fadeUp} custom={0} className="text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight dark:text-neutral-800">Everything You Need</h2>
+              <h2 className="text-3xl font-bold tracking-tight dark:text-black">Everything You Need</h2>
               <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto">A complete QR and barcode platform.</p>
             </motion.div>
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

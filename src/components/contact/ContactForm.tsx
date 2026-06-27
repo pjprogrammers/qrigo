@@ -17,6 +17,10 @@ interface ContactFormProps {
 export function ContactForm({ card, onChange }: ContactFormProps) {
   const [showAddress, setShowAddress] = React.useState(false);
   const [showSocials, setShowSocials] = React.useState(false);
+  const cardRef = React.useRef(card);
+  const onChangeRef = React.useRef(onChange);
+  cardRef.current = card;
+  onChangeRef.current = onChange;
 
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -51,8 +55,9 @@ export function ContactForm({ card, onChange }: ContactFormProps) {
   };
 
   React.useEffect(() => {
-    if (!card.website || card.socials) return;
-    const url = card.website.toLowerCase();
+    const c = cardRef.current;
+    if (!c.website || c.socials) return;
+    const url = c.website.toLowerCase();
     const matches: Record<string, keyof SocialLinks> = {
       "instagram.com": "instagram",
       "linkedin.com": "linkedin",
@@ -66,7 +71,7 @@ export function ContactForm({ card, onChange }: ContactFormProps) {
     };
     for (const [domain, key] of Object.entries(matches)) {
       if (url.includes(domain)) {
-        updateSocial(key, card.website);
+        onChangeRef.current({ ...c, socials: { ...(c.socials || {}), [key]: c.website } });
         break;
       }
     }

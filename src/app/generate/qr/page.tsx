@@ -37,16 +37,6 @@ function QRGeneratorPageInner() {
 
   const searchParams = useSearchParams();
 
-  React.useEffect(() => {
-    const typeParam = searchParams.get("type");
-    if (typeParam) {
-      const match = qrTypes.find((t) => t.id === typeParam);
-      if (match) {
-        setQRType(typeParam as any);
-      }
-    }
-  }, [searchParams]);
-
   const {
     data, setData, url, setUrl,
     username, setUsername,
@@ -61,9 +51,17 @@ function QRGeneratorPageInner() {
     setCodeType,
   } = useQRStore();
 
-  React.useEffect(() => { setCodeType("qr"); }, []);
+  React.useEffect(() => {
+    const typeParam = searchParams.get("type");
+    if (typeParam) {
+      const match = qrTypes.find((t) => t.id === typeParam);
+      if (match) {
+        setQRType(typeParam as any);
+      }
+    }
+  }, [searchParams, setQRType]);
 
-  React.useEffect(() => { setCodeType("qr"); }, []);
+  React.useEffect(() => { setCodeType("qr"); }, [setCodeType]);
 
   const handleTypeChange = (typeId: string) => {
     setQRType(typeId as any);

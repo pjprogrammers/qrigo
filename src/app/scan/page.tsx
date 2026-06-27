@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Camera, Upload, Scan, QrCode, Loader2, AlertCircle, RotateCw } from "lucide-react";
 import { CameraView } from "@/components/scanners/CameraView";
@@ -88,6 +89,22 @@ function ScanPageInner() {
     setState((prev) => ({ ...prev, scanning: false, flashOn: false }));
   }, [stopEngines, releaseCamera]);
 
+  const handleScanResult = React.useCallback(
+    async (text: string, format?: string) => {
+      stopEngines();
+      const parsed = parseScanResult(text, format);
+      setState((prev) => ({ ...prev, result: parsed }));
+      await saveScanItem({
+        id: crypto.randomUUID(),
+        type: parsed.type,
+        format,
+        rawText: text,
+        createdAt: Date.now(),
+      });
+    },
+    [stopEngines]
+  );
+
   const startScanner = React.useCallback(
     async (deviceId: string, mode: ScanMode) => {
       stopEngines();
@@ -123,23 +140,7 @@ function ScanPageInner() {
 
       setState((prev) => ({ ...prev, scanning: true, initializing: false }));
     },
-    []
-  );
-
-  const handleScanResult = React.useCallback(
-    async (text: string, format?: string) => {
-      stopEngines();
-      const parsed = parseScanResult(text, format);
-      setState((prev) => ({ ...prev, result: parsed }));
-      await saveScanItem({
-        id: crypto.randomUUID(),
-        type: parsed.type,
-        format,
-        rawText: text,
-        createdAt: Date.now(),
-      });
-    },
-    [stopEngines]
+    [stopEngines, handleScanResult]
   );
 
   const initCamera = React.useCallback(async () => {
@@ -163,7 +164,7 @@ function ScanPageInner() {
       stopEngines();
       releaseCamera();
     };
-  }, [state.tab]);
+  }, [state.tab, initCamera, releaseCamera, stopEngines]);
 
   const handleUploadFile = React.useCallback(
     async (file: File) => {
@@ -264,7 +265,7 @@ function ScanPageInner() {
       <nav aria-label="Breadcrumb" className="max-w-lg mx-auto px-4 pt-4">
         <ol className="flex items-center gap-1.5 text-xs text-neutral-500">
           <li>
-            <a href="/" className="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">Home</a>
+            <Link href="/" className="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors">Home</Link>
           </li>
           <li aria-hidden="true">/</li>
           <li className="text-neutral-700 dark:text-neutral-300 font-medium" aria-current="page">Scan</li>

@@ -159,7 +159,7 @@ export default function GeneratePage() {
                                 <TiltCard tiltDegree={8}>
                                   <GlowCard hoverOnly>
                                     <RippleEffect>
-                                      <div className="relative p-6 sm:p-7 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800/60 h-full flex flex-col">
+                                      <div className="relative p-6 sm:p-7 rounded-xl bg-white dark:bg-neutral-200 border border-neutral-200/60 dark:border-neutral-800/60 h-full flex flex-col">
                                         <div className="flex items-start justify-between mb-4">
                                           <PulseRing size={48} color={card.glowColor} ringCount={2}>
                                             <div className={cn(

@@ -81,7 +81,7 @@ export default function ContactGeneratorPage() {
       createdAt: Date.now(),
       favorite: false,
     });
-  }, [hasData, card, template, theme, qrSvg]);
+  }, [hasData, card, template, theme]);
 
   const handleDownloadPNG = () => {
     if (!hasData) return;
