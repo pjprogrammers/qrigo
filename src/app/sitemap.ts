@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, CREATED_DATE } from "@/lib/constants";
+import { SITE_URL } from "@/lib/constants";
 
-const siteLastModified = CREATED_DATE;
+const siteLastModified = new Date();
 
 export const revalidate = 86400;
 
