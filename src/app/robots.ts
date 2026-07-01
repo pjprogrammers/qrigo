@@ -2,14 +2,6 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
 
 export default function robots(): MetadataRoute.Robots {
-  const isProduction = process.env.VERCEL_ENV === "production";
-
-  if (!isProduction) {
-    return {
-      rules: { userAgent: "*", disallow: "/" },
-    };
-  }
-
   return {
     rules: [
       {
@@ -43,11 +35,19 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
       {
+        userAgent: "anthropic-ai",
+        allow: "/",
+      },
+      {
         userAgent: "Bytespider",
         allow: "/",
       },
       {
         userAgent: "Perplexity-User",
+        allow: "/",
+      },
+      {
+        userAgent: "PerplexityBot",
         allow: "/",
       },
       {
