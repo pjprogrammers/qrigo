@@ -24,23 +24,27 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "Google-Extended",
-        disallow: "/",
+        allow: "/",
       },
       {
         userAgent: "GPTBot",
-        disallow: "/",
+        allow: "/",
       },
       {
         userAgent: "ClaudeBot",
-        disallow: "/",
+        allow: "/",
+      },
+      {
+        userAgent: "Claude-Web",
+        allow: "/",
       },
       {
         userAgent: "CCBot",
-        disallow: "/",
+        allow: "/",
       },
       {
         userAgent: "Bytespider",
-        disallow: "/",
+        allow: "/",
       },
       {
         userAgent: "Perplexity-User",
